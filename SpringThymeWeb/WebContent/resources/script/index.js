@@ -1,3 +1,3 @@
 function message() {
-    alert("hello!!!");
+    console.log("hello!!!");
 }

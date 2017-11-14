@@ -2,17 +2,55 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Home</title>
-<meta charset="utf-8" />
-<link rel="icon" type="image/png" th:href="@{/resources/images/favicon.png}">
-<link rel="stylesheet" type="text/css" th:href="@{/resources/style/index.css}" />
+<title th:text="#{index.title}"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="icon" type="image/png"
+	th:href="@{/resources/images/favicon.png}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/resources/style/index.css}" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" th:src="@{resources/script/index.js}"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<p>
 		Hello <span th:text="${recipient}">Peter</span>!!!
 	</p>
 	<br />
-	<button onclick="message()">Click me</button>
+	<a href="/SpringThymeWeb/data?lang=tam">Tamil </a>  |
+	<a href="/SpringThymeWeb/data?lang=en">English </a> | 
+	<a href="/SpringThymeWeb/data?lang=de">German </a> 
+	
+	<br />
+	<button onclick="message()" th:text="#{index.button.caption}"></button>
+	<div th:if="${listData} != null">
+		<table id="dataTable" class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Company</th>
+					<th>Location</th>
+					<th>Serial</th>
+					<th>Licenses</th>
+				</tr>
+			<thead>
+			<tbody>
+				<tr th:each="lic,idx : ${listData}">
+					<td th:text="${lic.companyCode}"></td>
+					<td th:text="${lic.locnCode}"></td>
+					<td th:text="${lic.serial}"></td>
+					<td th:text="${lic.licsCount}"></td>
+				<tr>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>
