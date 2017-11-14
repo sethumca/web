@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Home</title>
+<meta charset="utf-8" />
+<link rel="icon" type="image/png" th:href="@{/resources/images/favicon.png}">
+<link rel="stylesheet" type="text/css" th:href="@{/resources/style/index.css}" />
+<script type="text/javascript" th:src="@{resources/script/index.js}"></script>
+</head>
+<body>
+	<p>
+		Hello <span th:text="${recipient}">Peter</span>!!!
+	</p>
+	<br />
+	<button onclick="message()">Click me</button>
+</body>
+</html>
