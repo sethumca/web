@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Error</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/resources/style/notfound.css}" />
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="error-template">
+					<h1>Oops!</h1>
+					<h2>404 Not Found</h2>
+					<div class="error-details">Sorry, Requested page not found!</div>
+					<div class="error-actions">
+						<a href="/SpringThymeWeb/" class="btn btn-primary btn-lg"><span
+							class="glyphicon glyphicon-home"></span> Take Me Home </a><a
+							href="mailto:support@mail.com" class="btn btn-default btn-lg">
+							<span class="glyphicon glyphicon-envelope"></span> Contact
+							Support
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
