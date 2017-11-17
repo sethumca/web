@@ -22,6 +22,12 @@ public class IndexController extends AbstractController {
 	private IndexService service;
 	
     @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String home(HttpServletRequest request, Model model) {
+    	checkRequest(request);
+        return PageConstant.HOME_HTML;
+    }
+    
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index(HttpServletRequest request, Model model) {
     	checkRequest(request);
         model.addAttribute("recipient", "World");
@@ -29,26 +35,18 @@ public class IndexController extends AbstractController {
     }
     
     @RequestMapping(value = "/data", method = RequestMethod.GET)
-    public String indexDefault(HttpServletRequest request, Model model) {
-    	try {
-			checkRequest(request);
-			model.addAttribute("listData", service.getAllLicense());
-			return PageConstant.INDEX_HTML;
-		} catch (SQLException e) {
-			return showError(model, e);
-		}
+    public String indexDefault(HttpServletRequest request, Model model) throws SQLException {
+    	checkRequest(request);
+		model.addAttribute("listData", service.getAllLicense());
+		return PageConstant.INDEX_HTML;
     }
     
     @RequestMapping(value = "/data", method = RequestMethod.POST)
-    public String indexData(HttpServletRequest request, Model model, @RequestParam("lang") Locale locale) {
-    	try {
-			checkRequest(request);
-			model.addAttribute("lang", locale);
-			model.addAttribute("listData", service.getAllLicense());
-			return PageConstant.INDEX_HTML;
-		} catch (SQLException e) {
-			return showError(model, e);
-		}
+    public String indexData(HttpServletRequest request, Model model, @RequestParam("lang") Locale locale) throws SQLException {
+    	checkRequest(request);
+		model.addAttribute("lang", locale);
+		model.addAttribute("listData", service.getAllLicense());
+		return PageConstant.INDEX_HTML;
     }
     
 }

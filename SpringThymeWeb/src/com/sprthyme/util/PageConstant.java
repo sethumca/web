@@ -5,6 +5,8 @@ public class PageConstant {
 	private PageConstant() {
 	}
 	
+	public static final String HOME_HTML = "home";
+	
 	public static final String INDEX_HTML = "index";
 	
 	public static final String ERROR_HTML = "error";

@@ -22,22 +22,21 @@ public class GlobalControllerAdvice {
 	@ExceptionHandler(NoHandlerFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public String handleResourceNotFoundException(Exception e) {
-		log.error("A Exception Ocurred: ", e);
 		return PageConstant.NOT_FOUND;
 	}
 	
 	@ExceptionHandler(value = NullPointerException.class)
 	public String handleNullPointerException(Exception e, Model model) {
-		log.error("A null pointer exception ocurred ", e);
+		log.error("A Null Pointer Exception Ocurred ", e);
 		model.addAttribute("message", e.getLocalizedMessage());
 		model.addAttribute("stacktrace", e.getStackTrace());
 		return PageConstant.ERROR_HTML;
 	}
-
-	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	
 	@ExceptionHandler(value = Exception.class)
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
 	public String handleAllException(Exception e, Model model) {
-		log.error("A unknow Exception Ocurred: ", e);
+		log.error("An Unknow Exception Ocurred: ", e);
 		model.addAttribute("message", e.getLocalizedMessage());
 		model.addAttribute("stacktrace", e.getStackTrace());
 		return PageConstant.ERROR_HTML;
@@ -45,7 +44,7 @@ public class GlobalControllerAdvice {
 
 	@ExceptionHandler(SQLException.class)
 	public ResponseEntity<String> getSQLError(Exception e) {
-		log.error("A Exception Ocurred: ", e);
+		log.error("An Exception Ocurred: ", e);
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("HeaderKey", "HeaderDetails");
 		return new ResponseEntity<>("Rest Controller Advice Example", headers, HttpStatus.ACCEPTED);
